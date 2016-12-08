@@ -1,0 +1,10 @@
+{
+    "name": "calderacc/death-bike",
+    "authors": [
+        {
+            "name": "Malte Huebner",
+            "email": "malte@caldera.cc"
+        }
+    ],
+    "require": {}
+}
