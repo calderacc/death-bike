@@ -20,9 +20,9 @@ class DefaultController extends Controller
             $year = $dateTime->format('Y');
         }
 
-        $entityList = $this->getEntityList($year);
+        $incidentList = $this->getEntityList($year);
 
-        $counter = count($entityList);
+        $counter = count($incidentList);
         $counterString = sprintf('%03d', $counter);
 
         return $this->render(
@@ -30,7 +30,7 @@ class DefaultController extends Controller
             [
                 'year' => $year,
                 'counter' => $counterString,
-                'entityList' => $entityList
+                'incidentList' => $incidentList
             ]
         );
     }
