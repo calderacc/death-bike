@@ -17,27 +17,33 @@ class DefaultController extends Controller
     {
         $year = 2016;
 
-        $entityList = $this->getItemList($year);
+        $entityList = $this->getEntityList($year);
 
-        var_dump($entityList);
+        $counter = count($entityList);
+        $counterString = sprintf('%03d', $counter);
 
         return $this->render(
             'CalderaDeathBikeBundle:Default:index.html.twig',
             [
                 'year' => $year,
-                'counter' => 423
+                'counter' => $counterString,
+                'entityList' => $entityList
             ]
         );
     }
 
-    protected function getItemList(int $year): array
+    protected function getEntityList(int $year): array
     {
         $cache = new FilesystemAdapter();
 
         $cacheItem = $cache->getItem('item-list-' . $year);
 
-        var_dump($cacheItem);
-        $entityList = $cacheItem->get();
+        $jsonList = $cacheItem->get();
+        $entityList = [];
+
+        foreach ($jsonList as $json) {
+            $entityList[] = $this->get('jms_serializer')->deserialize($json, 'Caldera\Bundle\DeathBikeBundle\Entity\Incident', 'json');
+        }
 
         if (is_array($entityList)) {
             return $entityList;
