@@ -6,6 +6,7 @@ use Curl\Curl;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -25,13 +26,21 @@ class RefreshCommand extends ContainerAwareCommand
     {
         $this
             ->setName('deathbike:refresh')
-            ->setDescription('Store death incidents');
+            ->setDescription('Store death incidents')
+            ->addArgument(
+                'year',
+                InputArgument::REQUIRED,
+                'Year for incidents to import'
+            )
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $year = $input->getArgument('year');
+
         $curl = new Curl();
-        $curl->get('http://cycleways.cw/app_dev.php/api/?incident_type=deadly_accident&year=2016');
+        $curl->get('http://cycleways.cw/app_dev.php/api/?incident_type=deadly_accident&year=' . $year);
 
         $jsonReponse = $curl->response;
         $deathList = json_decode($jsonReponse);
@@ -39,13 +48,12 @@ class RefreshCommand extends ContainerAwareCommand
         $entityList = [];
 
         foreach ($deathList as $death) {
-            //$entityList[] = $this->getContainer()->get('jms_serializer')->deserialize(json_encode($death), 'Caldera\Bundle\DeathBikeBundle\Entity\Incident', 'json');
             $entityList[] = json_encode($death);
         }
 
         $cache = new FilesystemAdapter();
 
-        $cacheItem = $cache->getItem('item-list-2016');
+        $cacheItem = $cache->getItem('item-list-' . $year);
         $cacheItem->set($entityList);
         $cache->save($cacheItem);
     }
