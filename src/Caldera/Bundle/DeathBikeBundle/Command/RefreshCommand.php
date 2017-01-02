@@ -31,20 +31,22 @@ class RefreshCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $curl = new Curl();
-        $curl->get('http://cycleways.cw/app_dev.php/api/?incident_type=deadly_accident&year=2011');
+        $curl->get('http://cycleways.cw/app_dev.php/api/?incident_type=deadly_accident&year=2016');
 
         $jsonReponse = $curl->response;
         $deathList = json_decode($jsonReponse);
 
+        $entityList = [];
+
         foreach ($deathList as $death) {
-            $entity = $this->getContainer()->get('jms_serializer')->deserialize(json_encode($death), 'Caldera\Bundle\DeathBikeBundle\Entity\Incident', 'json');
-            var_dump($entity);
+            //$entityList[] = $this->getContainer()->get('jms_serializer')->deserialize(json_encode($death), 'Caldera\Bundle\DeathBikeBundle\Entity\Incident', 'json');
+            $entityList[] = json_encode($death);
         }
 
         $cache = new FilesystemAdapter();
 
-        $cacheItem = $cache->getItem('itemList');
-
-
+        $cacheItem = $cache->getItem('item-list-2016');
+        $cacheItem->set($entityList);
+        $cache->save($cacheItem);
     }
 }
