@@ -2,9 +2,7 @@
 
 namespace Caldera\Bundle\DeathBikeBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @JMS\ExclusionPolicy("all")
@@ -28,159 +26,132 @@ class Incident
     const GEOMETRY_MARKER = 'marker';
 
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Expose
      * @JMS\Type("integer")
      */
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="City", inversedBy="incidents")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      * @JMS\Expose
      * @JMS\Type("Caldera\Bundle\DeathBikeBundle\Entity\City")
      */
     protected $city;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $slug;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank()
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $geometryType;
 
     /**
-     * @ORM\Column(type="string", length=255)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $incidentType;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $dangerLevel;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $address;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $street;
 
     /**
-     * @ORM\Column(type="string", length=16, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $houseNumber;
 
     /**
-     * @ORM\Column(type="string", length=5, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $zipCode;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $suburb;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $district;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $polyline;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
      * @JMS\Expose
      * @JMS\Type("float")
      */
     protected $latitude = null;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
      * @JMS\Expose
      * @JMS\Type("float")
      */
     protected $longitude = null;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
      * @JMS\Expose
      * @JMS\Type("datetime")
      */
     protected $dateTime;
 
     /**
-     * @ORM\Column(type="boolean")
      * @JMS\Expose
      * @JMS\Type("boolean")
      */
     protected $expires;
 
     /**
-     * @ORM\Column(type="datetime")
      * @JMS\Expose
      * @JMS\Type("datetime")
      */
     protected $visibleFrom;
 
     /**
-     * @ORM\Column(type="datetime")
      * @JMS\Expose
      * @JMS\Type("datetime")
      */
     protected $visibleTo;
 
     /**
-     * @ORM\Column(type="boolean")
      * @JMS\Expose
      * @JMS\Type("boolean")
 
@@ -188,21 +159,18 @@ class Incident
     protected $enabled = true;
 
     /**
-     * @ORM\Column(type="datetime")
      * @JMS\Expose
      * @JMS\Type("datetime")
      */
     protected $creationDateTime;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $permalink;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */

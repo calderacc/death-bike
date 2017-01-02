@@ -2,10 +2,7 @@
 
 namespace Caldera\Bundle\DeathBikeBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
 
 /**
  * @JMS\ExclusionPolicy("all")
@@ -13,65 +10,54 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
 class City
 {
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
      * @JMS\Expose
      * @JMS\Type("integer")
      */
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $slug;
 
     /**
-     * @ORM\Column(type="string", length=255)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $name;
 
     /**
-     * @ORM\Column(type="float")
      * @JMS\Expose
      * @JMS\Type("float")
      */
     protected $latitude = 0;
 
     /**
-     * @ORM\Column(type="float")
      * @JMS\Expose
      * @JMS\Type("float")
      */
     protected $longitude = 0;
 
     /**
-     * @ORM\Column(type="string", length=5)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $zip;
 
     /**
-     * @ORM\Column(type="integer")
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $locId;
 
     /**
-     * @ORM\Column(type="integer")
      * @JMS\Expose
      * @JMS\Type("integer")
      */
     protected $population;
 
     /**
-     * @ORM\Column(type="integer")
      * @JMS\Expose
      * @JMS\Type("integer")
      */
