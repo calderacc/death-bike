@@ -6,6 +6,7 @@ use Curl\Curl;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -47,8 +48,12 @@ class RefreshCommand extends ContainerAwareCommand
 
         $entityList = [];
 
+        $progress = new ProgressBar($output, count($deathList));
+        $progress->start();
+
         foreach ($deathList as $death) {
             $entityList[] = json_encode($death);
+            $progress->advance();
         }
 
         $cache = new FilesystemAdapter();
@@ -56,5 +61,7 @@ class RefreshCommand extends ContainerAwareCommand
         $cacheItem = $cache->getItem('item-list-' . $year);
         $cacheItem->set($entityList);
         $cache->save($cacheItem);
+
+        $progress->finish();
     }
 }
