@@ -13,9 +13,12 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request): Response
+    public function indexAction(Request $request, string $year = null): Response
     {
-        $year = 2016;
+        if (!$year) {
+            $dateTime = new \DateTime();
+            $year = $dateTime->format('Y');
+        }
 
         $entityList = $this->getEntityList($year);
 
