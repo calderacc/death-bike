@@ -14,6 +14,14 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request): Response
     {
-        return $this->render('CalderaDeathBikeBundle:Default:index.html.twig');
+        $year = 2017;
+
+        return $this->render(
+            'CalderaDeathBikeBundle:Default:index.html.twig',
+            [
+                'year' => $year,
+                'counter' => 423
+            ]
+        );
     }
 }
