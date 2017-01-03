@@ -5,6 +5,7 @@
         <title>death.bike &mdash; Getötete Radfahrer im Jahr {{ year }}</title>
 
         <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/death.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/leaflet/leaflet.css') }}" />
     </head>
     <body>
         <div class="container">
@@ -52,11 +53,34 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="row mt-3">
+                <div class="col-xs-12">
+                    <div id="map" style="height: 300px;">
+
+                    </div>
+                </div>
+            </div>
         </div>
+
+
 
         <script src="{{ asset('/bundles/calderadeathbike/js/jquery/jquery-3.1.1.min.js') }}"></script>
         <script src="{{ asset('/bundles/calderadeathbike/js/tether/tether.min.js') }}"></script>
         <script src="{{ asset('/bundles/calderadeathbike/js/bootstrap/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.js') }}"></script>
+
+        <script>
+            var map = L.map('map').setView([51.505, -0.09], 13);
+
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([51.5, -0.09]).addTo(map)
+                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+                .openPopup();
+        </script>
 
         {{ include('CalderaDeathBikeBundle:Includes:piwik.html.twig') }}
     </body>
