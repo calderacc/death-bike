@@ -84,7 +84,7 @@
             {% for incident in incidentList %}
             L.marker([{{ incident.latitude }}, {{ incident.longitude }}]).addTo(map)
                 .bindPopup('{{ incident.description }}')
-                .openPopup();
+            ;
             {% endfor %}
         </script>
 
