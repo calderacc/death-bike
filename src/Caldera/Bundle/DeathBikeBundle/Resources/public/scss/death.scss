@@ -1,0 +1,61 @@
+@import "bootstrap/bootstrap.scss";
+
+body {
+  background: black;
+  color: white;
+}
+
+#flipcounter {
+  margin: 50px auto 100px;
+  position: relative;
+  width: 459px;
+  height: 180px;
+
+  background: linear-gradient(to bottom, #000, #121212);
+  box-shadow: 5px 5px 30px rgba(200, 200, 200, .05), 0 -5px 20px black;
+
+  -moz-border-radius: 31px;
+  -webkit-border-radius: 31px;
+  border-radius: 31px;
+}
+
+#flipcounter .digit {
+  width: 150px;
+  height: 180px;
+
+  overflow: hidden;
+  float: left;
+
+  background: #333;
+  background: linear-gradient(to bottom, #383838, #363636);
+
+  box-shadow: 0 1px 0 black inset, 0 2px 0 rgba(255, 255, 255, .1) inset;
+
+  font-weight: 600;
+  font-size: 171px;
+  text-align: center;
+  letter-spacing: -10px;
+  line-height: 171px;
+
+  border-radius: 16px;
+  text-indent: -10px;
+}
+
+#flipbreak {
+  width: 100%;
+  height: 100px;
+
+  display: block;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.4));
+  box-shadow: 0 -1px 0 black inset, 0 1px 0 rgba(255, 255, 255, 0.04), 0 5px 100px rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+#flipcounter .digit + .digit {
+  margin-left: 3px;
+}
