@@ -40,8 +40,11 @@ class RefreshCommand extends ContainerAwareCommand
     {
         $year = $input->getArgument('year');
 
+        $apiUrl = $this->getContainer()->getParameter('cycleways.api');
+        $apiUrl .= '?incident_type=deadly_accident&year=' . $year;
+
         $curl = new Curl();
-        $curl->get('http://cycleways.cw/app_dev.php/api/?incident_type=deadly_accident&year=' . $year);
+        $curl->get($apiUrl);
 
         $jsonReponse = $curl->response;
         $deathList = json_decode($jsonReponse);
