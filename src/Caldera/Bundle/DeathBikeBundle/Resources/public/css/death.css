@@ -5027,6 +5027,9 @@ body {
   margin-left: 3px; }
 
 @media (max-width: 500px) {
+  #flipbreak {
+    height: 75px; }
+
   #flipcounter {
     margin: 50px auto 100px;
     width: 315px; }
@@ -5037,6 +5040,9 @@ body {
     font-size: 120px;
     line-height: 150px; } }
 @media (max-width: 350px) {
+  #flipbreak {
+    height: 60px; }
+
   #flipcounter {
     margin: 50px auto 100px;
     width: 215px; }
