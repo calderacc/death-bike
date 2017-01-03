@@ -4981,6 +4981,9 @@ body {
   background: black;
   color: white; }
 
+.modal {
+  color: black; }
+
 #flipcounter {
   margin: 50px auto 100px;
   position: relative;
