@@ -73,3 +73,17 @@ body {
     line-height: 150px;
   }
 }
+
+@media (max-width: 350px) {
+  #flipcounter {
+    margin: 50px auto 100px;
+    width: 215px;
+  }
+
+  #flipcounter .digit {
+    width: 65px;
+    height: 120px;
+    font-size: 80px;
+    line-height: 120px;
+  }
+}
