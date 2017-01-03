@@ -59,3 +59,17 @@ body {
 #flipcounter .digit + .digit {
   margin-left: 3px;
 }
+
+@media (max-width: 500px) {
+  #flipcounter {
+    margin: 50px auto 100px;
+    width: 315px;
+  }
+
+  #flipcounter .digit {
+    width: 100px;
+    height: 150px;
+    font-size: 120px;
+    line-height: 150px;
+  }
+}
