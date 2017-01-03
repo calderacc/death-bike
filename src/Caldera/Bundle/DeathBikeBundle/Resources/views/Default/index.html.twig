@@ -37,6 +37,7 @@
             </div>
         </div>
 
+        {% if incidentList|length > 0 %}
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
@@ -66,6 +67,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
 
         {{ include('CalderaDeathBikeBundle:Includes:footer.html.twig') }}
 
