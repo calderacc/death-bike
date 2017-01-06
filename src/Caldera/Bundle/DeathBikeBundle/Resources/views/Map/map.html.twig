@@ -42,12 +42,12 @@
                 ]);
 
             L.tileLayer('https://api.mapbox.com/styles/v1/maltehuebner/cixi2nrld00012rnwqorf4uxi/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFsdGVodWVibmVyIiwiYSI6IjB5c2QtNXcifQ.I7OHZr0wtAvqE0wIY_psfg', {
-                attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
+                attribution: '&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
             }).addTo(map);
 
             {% for incident in incidentList %}
             L.marker([{{ incident.latitude }}, {{ incident.longitude }}]).addTo(map)
-                .bindPopup('<a href="https://cycleways.info/{{ incident.slug }}"><strong>{{ incident.title}}</strong></a><p>{{ incident.description|escape('js') }}</p>')
+                .bindPopup('<a target="_blank" href="https://cycleways.info/{{ incident.slug }}"><strong>{{ incident.title}}</strong></a><p>{{ incident.description|escape('js') }}</p>')
             ;
             {% endfor %}
         </script>
