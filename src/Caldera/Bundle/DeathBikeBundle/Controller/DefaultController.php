@@ -11,6 +11,27 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
+     * @Route("/map/{year}", name="map")
+     */
+    public function mapAction(Request $request, string $year = null): Response
+    {
+        if (!$year) {
+            $dateTime = new \DateTime();
+            $year = $dateTime->format('Y');
+        }
+
+        $incidentList = $this->getEntityList($year);
+
+        return $this->render(
+            'CalderaDeathBikeBundle:Map:map.html.twig',
+            [
+                'year' => $year,
+                'incidentList' => $incidentList
+            ]
+        );
+    }
+
+    /**
      * @Route("/{year}", name="homepage")
      */
     public function indexAction(Request $request, string $year = null): Response
@@ -34,6 +55,8 @@ class DefaultController extends Controller
             ]
         );
     }
+
+
 
     protected function getEntityList(int $year): array
     {

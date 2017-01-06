@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <title>death.bike &mdash; Getötete Radfahrer im Jahr {{ year }}</title>
+
+        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/leaflet/leaflet.css') }}" />
+
+        <style type="text/css">
+            html,
+            body,
+            div#map {
+                width: 100%;
+                height: 100%;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map">
+
+        </div>
+
+        <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.js') }}"></script>
+        <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.sleep.js') }}"></script>
+
+        <script>
+            var map = L.map('map', { sleepNote: false }).setView([51.163375, 10.447683], 5);
+
+            L.tileLayer('https://api.mapbox.com/styles/v1/maltehuebner/cixi2nrld00012rnwqorf4uxi/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFsdGVodWVibmVyIiwiYSI6IjB5c2QtNXcifQ.I7OHZr0wtAvqE0wIY_psfg', {
+                attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
+            }).addTo(map);
+
+            {% for incident in incidentList %}
+            L.marker([{{ incident.latitude }}, {{ incident.longitude }}]).addTo(map)
+                .bindPopup('{{ incident.description|escape('js') }}')
+            ;
+            {% endfor %}
+        </script>
+
+        {{ include('CalderaDeathBikeBundle:Includes:piwik.html.twig') }}
+    </body>
+</html>
