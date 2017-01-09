@@ -9,7 +9,9 @@
 
         <title>death.bike &mdash; Getötete Radfahrer im Jahr {{ year }}</title>
 
+        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/death.css') }}" />
         <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/leaflet/leaflet.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/extramarkers/extramarkers.min.css') }}" />
 
         <style type="text/css">
             html,
@@ -32,6 +34,7 @@
 
         <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.js') }}"></script>
         <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.sleep.js') }}"></script>
+        <script src="{{ asset('/bundles/calderadeathbike/js/extramarkers/extramarkers.min.js') }}"></script>
 
         <script>
             var map = L
@@ -45,8 +48,16 @@
                 attribution: '&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
             }).addTo(map);
 
+            var markerIcon = L.ExtraMarkers.icon({
+                icon: 'fa-bicycle',
+                markerColor: 'white',
+                iconColor: 'black',
+                shape: 'circle',
+                prefix: 'fa'
+            });
+
             {% for incident in incidentList %}
-            L.marker([{{ incident.latitude }}, {{ incident.longitude }}]).addTo(map)
+            L.marker([{{ incident.latitude }}, {{ incident.longitude }}], { icon: markerIcon }).addTo(map)
                 .bindPopup('<a target="_blank" href="https://cycleways.info/{{ incident.slug }}"><strong>{{ incident.title}}</strong></a><p>{{ incident.description|escape('js') }}</p>')
             ;
             {% endfor %}
