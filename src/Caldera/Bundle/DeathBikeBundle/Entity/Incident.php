@@ -33,7 +33,7 @@ class Incident
 
     /**
      * @JMS\Expose
-     * @JMS\Type("Caldera\Bundle\DeathBikeBundle\Entity\City")
+     * @JMS\Type("string")
      */
     protected $city;
 
@@ -715,10 +715,10 @@ class Incident
     }
 
     /**
-     * @param City $city
+     * @param string $city
      * @return Incident
      */
-    public function setCity(City $city = null): Incident
+    public function setCity(string $city = null): Incident
     {
         $this->city = $city;
 
@@ -726,9 +726,9 @@ class Incident
     }
 
     /**
-     * @return City
+     * @return string
      */
-    public function getCity(): ?City
+    public function getCity(): ?string
     {
         return $this->city;
     }
