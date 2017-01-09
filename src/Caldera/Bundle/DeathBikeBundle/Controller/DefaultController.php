@@ -73,7 +73,7 @@ class DefaultController extends Controller
         $entityList = [];
 
         foreach ($jsonList as $json) {
-            $entityList[] = $this->get('jms_serializer')->deserialize($json, 'Caldera\Bundle\DeathBikeBundle\Entity\Incident', 'json');
+            array_unshift($entityList, $this->get('jms_serializer')->deserialize($json, 'Caldera\Bundle\DeathBikeBundle\Entity\Incident', 'json'));
         }
 
         return $entityList;
