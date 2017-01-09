@@ -64,6 +64,12 @@
                     <ul class="list-unstyled">
                         {% for incident in incidentList %}
                         <li class="mt-3">
+                            <p class="text-xs-center">
+                                <time>
+                                    {{ incident.dateTime|date('d.m.Y') }}
+                                </time>
+                            </p>
+
                             <a href="https://cycleways.info/{{ incident.slug }}">
                                 <h3 class="text-xs-center">
                                     {{ incident.title }}

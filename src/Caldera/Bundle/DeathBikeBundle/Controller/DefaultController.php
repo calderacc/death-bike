@@ -2,6 +2,7 @@
 
 namespace Caldera\Bundle\DeathBikeBundle\Controller;
 
+use Caldera\Bundle\DeathBikeBundle\Entity\Incident;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
@@ -56,8 +57,6 @@ class DefaultController extends Controller
         );
     }
 
-
-
     protected function getEntityList(int $year): array
     {
         $cache = new FilesystemAdapter();
@@ -73,7 +72,9 @@ class DefaultController extends Controller
         $entityList = [];
 
         foreach ($jsonList as $json) {
-            array_unshift($entityList, $this->get('jms_serializer')->deserialize($json, 'Caldera\Bundle\DeathBikeBundle\Entity\Incident', 'json'));
+            /** @var Incident $entity */
+            $entity = $this->get('jms_serializer')->deserialize($json, 'Caldera\Bundle\DeathBikeBundle\Entity\Incident', 'json');
+            array_unshift($entityList, $entity);
         }
 
         return $entityList;
