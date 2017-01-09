@@ -1,4 +1,27 @@
-@import "bootstrap/bootstrap.scss";
+/*!
+ * Bootstrap v4.0.0-alpha.5 (https://getbootstrap.com)
+ * Copyright 2011-2016 The Bootstrap Authors
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+@import "bootstrap/custom";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+@import "bootstrap/normalize";
+@import "bootstrap/print";
+
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/grid";
+@import "bootstrap/buttons";
+
+@import "bootstrap/modal";
+
+@import "bootstrap/close";
+@import "bootstrap/utilities";
+
 @import "fontawesome/font-awesome.scss";
 
 .modal {
