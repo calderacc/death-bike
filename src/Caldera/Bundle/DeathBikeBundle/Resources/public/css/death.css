@@ -276,8 +276,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  color: #373a3c;
-  background-color: #fff; }
+  color: white;
+  background-color: black; }
 
 [tabindex="-1"]:focus {
   outline: none !important; }
@@ -544,7 +544,7 @@ dl.row > dd + dt {
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #fff;
+  background-color: black;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   transition: all .2s ease-in-out;
@@ -1507,7 +1507,7 @@ pre {
   .table tbody + tbody {
     border-top: 2px solid #eceeef; }
   .table .table {
-    background-color: #fff; }
+    background-color: black; }
 
 .table-sm th,
 .table-sm td {
@@ -2324,7 +2324,7 @@ tbody.collapse.in {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #373a3c;
+  color: white;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -2847,7 +2847,7 @@ tbody.collapse.in {
   .nav-tabs .nav-item.open .nav-link:focus,
   .nav-tabs .nav-item.open .nav-link:hover {
     color: #55595c;
-    background-color: #fff;
+    background-color: black;
     border-color: #ddd #ddd transparent; }
   .nav-tabs .dropdown-menu {
     margin-top: -1px;
@@ -7301,10 +7301,6 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   margin: 0;
   overflow: visible;
   clip: auto; }
-
-body {
-  background: black;
-  color: white; }
 
 .modal {
   color: black; }
