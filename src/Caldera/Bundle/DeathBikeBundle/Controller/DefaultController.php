@@ -57,6 +57,31 @@ class DefaultController extends Controller
         );
     }
 
+    /**
+     * @Route("/list/{year}", name="homepage")
+     */
+    public function listAction(Request $request, string $year = null): Response
+    {
+        if (!$year) {
+            $dateTime = new \DateTime();
+            $year = $dateTime->format('Y');
+        }
+
+        $incidentList = $this->getEntityList($year);
+
+        $counter = count($incidentList);
+        $counterString = sprintf('%03d', $counter);
+
+        return $this->render(
+            'CalderaDeathBikeBundle:Default:list.html.twig',
+            [
+                'year' => $year,
+                'counter' => $counterString,
+                'incidentList' => $incidentList
+            ]
+        );
+    }
+
     protected function getEntityList(int $year): array
     {
         $cache = new FilesystemAdapter();
