@@ -6504,3 +6504,27 @@ a.text-gray-dark:hover {
     height: 120px;
     font-size: 80px;
     line-height: 120px; } }
+
+.mt-4 {
+  margin-top: 1.5rem; }
+
+.mt-5 {
+  margin-top: 2.0rem; }
+
+.mt-6 {
+  margin-top: 2.5rem; }
+
+.mt-7 {
+  margin-top: 3.5rem; }
+
+.mb-4 {
+  margin-bottom: 1.5rem; }
+
+.mb-5 {
+  margin-bottom: 2.0rem; }
+
+.mb-6 {
+  margin-bottom: 2.5rem; }
+
+.mb-7 {
+  margin-bottom: 3.5rem; }
