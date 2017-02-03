@@ -12,9 +12,34 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
+     * @Route("/list/{year}", name="list")
+     */
+    public function listAction(Request $request, int $year = null): Response
+    {
+        if (!$year) {
+            $dateTime = new \DateTime();
+            $year = $dateTime->format('Y');
+        }
+
+        $incidentList = $this->getEntityList($year);
+
+        $counter = count($incidentList);
+        $counterString = sprintf('%03d', $counter);
+
+        return $this->render(
+            'CalderaDeathBikeBundle:Default:list.html.twig',
+            [
+                'year' => $year,
+                'counter' => $counterString,
+                'incidentList' => $incidentList
+            ]
+        );
+    }
+
+    /**
      * @Route("/map/{year}", name="map")
      */
-    public function mapAction(Request $request, string $year = null): Response
+    public function mapAction(Request $request, int $year = null): Response
     {
         if (!$year) {
             $dateTime = new \DateTime();
@@ -33,9 +58,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{year}", name="homepage")
+     * @Route("/{year}", name="index")
      */
-    public function indexAction(Request $request, string $year = null): Response
+    public function indexAction(Request $request, int $year = null): Response
     {
         if (!$year) {
             $dateTime = new \DateTime();
@@ -49,31 +74,6 @@ class DefaultController extends Controller
 
         return $this->render(
             'CalderaDeathBikeBundle:Default:index.html.twig',
-            [
-                'year' => $year,
-                'counter' => $counterString,
-                'incidentList' => $incidentList
-            ]
-        );
-    }
-
-    /**
-     * @Route("/list/{year}", name="homepage")
-     */
-    public function listAction(Request $request, string $year = null): Response
-    {
-        if (!$year) {
-            $dateTime = new \DateTime();
-            $year = $dateTime->format('Y');
-        }
-
-        $incidentList = $this->getEntityList($year);
-
-        $counter = count($incidentList);
-        $counterString = sprintf('%03d', $counter);
-
-        return $this->render(
-            'CalderaDeathBikeBundle:Default:list.html.twig',
             [
                 'year' => $year,
                 'counter' => $counterString,
