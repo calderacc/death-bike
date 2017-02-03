@@ -58,6 +58,14 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/faq", name="faq")
+     */
+    public function faqAction(Request $request): Response
+    {
+        return $this->render('CalderaDeathBikeBundle:Default:faq.html.twig');
+    }
+
+    /**
      * @Route("/{year}", name="index")
      */
     public function indexAction(Request $request, int $year = null): Response

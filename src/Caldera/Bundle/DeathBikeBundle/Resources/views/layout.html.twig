@@ -7,7 +7,7 @@
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
 
-        <title>death.bike &mdash; Getötete Radfahrer im Jahr {{ year }}</title>
+        <title>death.bike &mdash; Getötete Radfahrer im Jahr {{ year|default('2017') }}</title>
 
         <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/death.css') }}" />
         <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/leaflet/leaflet.css') }}" />
@@ -39,7 +39,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">FAQ</a>
+                            <a class="nav-link" href="{{ path('faq') }}">FAQ</a>
                         </li>
                     </ul>
                 </div>
