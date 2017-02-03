@@ -1,120 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+{% extends 'CalderaDeathBikeBundle::layout.html.twig' %}
 
-        <title>death.bike &mdash; Getötete Radfahrer im Jahr {{ year }}</title>
+{% block content %}
+<div class="row mt-3">
+    <div class="col-12">
+        <h1 class="text-center">
+            Getötete Radfahrer im Jahr {{ year }}
+        </h1>
+    </div>
+</div>
 
-        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/death.css') }}" />
-        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/leaflet/leaflet.css') }}" />
-        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/extramarkers/extramarkers.min.css') }}" />
-    </head>
-    <body>
-        <a class="hidden-sm-down" href="http://sqi.be/lhqsy">
-            <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" />
-        </a>
-
-        <div class="container" style="min-height: 50vh;">
-            <div class="row mt-2">
-                <div class="col-6 offset-3">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Karte
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Liste
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Über</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">FAQ</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row mt-3">
-                <div class="col-12">
-                    <h1 class="text-center">
-                        Getötete Radfahrer im Jahr {{ year }}
-                    </h1>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 col-md-8 offset-md-2">
-                    <ul class="list-unstyled">
-                        {% for incident in incidentList %}
-                        <li class="mt-3">
-                            <p class="text-center">
-                                <time>
-                                    {{ incident.dateTime|date('d.m.Y') }}
-                                </time>
-                            </p>
-
-                            <a href="https://cycleways.info/{{ incident.slug }}">
-                                <h3 class="text-center">
-                                    {{ incident.title }}
-                                </h3>
-                            </a>
-
-                            <p>
-                                {{ incident.description }}
-                            </p>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        {{ include('CalderaDeathBikeBundle:Includes:footer.html.twig') }}
-
-        <script src="{{ asset('/bundles/calderadeathbike/js/jquery/jquery-3.1.1.min.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/tether/tether.min.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/bootstrap/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.sleep.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/extramarkers/extramarkers.min.js') }}"></script>
-
-        <script>
-            var map = L
-                .map('map', { sleepNote: false, zoomControl: false })
-                .fitBounds([
-                    [55.1, 5.87],
-                    [47.27, 15.04]
-                ]);
-            L.tileLayer('https://api.mapbox.com/styles/v1/maltehuebner/cixi2nrld00012rnwqorf4uxi/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFsdGVodWVibmVyIiwiYSI6IjB5c2QtNXcifQ.I7OHZr0wtAvqE0wIY_psfg', {
-                attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
-            }).addTo(map);
-
-            var markerIcon = L.ExtraMarkers.icon({
-                icon: 'fa-bicycle',
-                markerColor: 'white',
-                iconColor: 'black',
-                shape: 'circle',
-                prefix: 'fa'
-            });
-
+<div class="row">
+    <div class="col-12 col-md-8 offset-md-2">
+        <ul class="list-unstyled">
             {% for incident in incidentList %}
-            L.marker([{{ incident.latitude }}, {{ incident.longitude }}], { icon: markerIcon }).addTo(map)
-                .bindPopup('<a href="https://cycleways.info/{{ incident.slug }}"><strong>{{ incident.title}}</strong></a><p>{{ incident.description|escape('js') }}</p>')
-            ;
-            {% endfor %}
-        </script>
+            <li class="mt-3">
+                <p class="text-center">
+                    <time>
+                        {{ incident.dateTime|date('d.m.Y') }}
+                    </time>
+                </p>
 
-        {{ include('CalderaDeathBikeBundle:Includes:piwik.html.twig') }}
-    </body>
-</html>
+                <a href="https://cycleways.info/{{ incident.slug }}">
+                    <h3 class="text-center">
+                        {{ incident.title }}
+                    </h3>
+                </a>
+
+                <p>
+                    {{ incident.description }}
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
