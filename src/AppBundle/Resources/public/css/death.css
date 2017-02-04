@@ -6440,13 +6440,13 @@ a.text-gray-dark:hover {
 #flipcounter {
   margin: 50px auto 100px;
   position: relative;
-  width: 459px;
+  width: 456px;
   height: 180px;
   background: linear-gradient(to bottom, #000, #121212);
   box-shadow: 5px 5px 30px rgba(200, 200, 200, 0.05), 0 -5px 20px black;
   -moz-border-radius: 31px;
   -webkit-border-radius: 31px;
-  border-radius: 31px; }
+  border-radius: 15px; }
 
 #flipcounter .digit {
   width: 150px;
