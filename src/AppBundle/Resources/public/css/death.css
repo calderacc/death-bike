@@ -6488,7 +6488,8 @@ a.text-gray-dark:hover {
     width: 306px; }
   #flipcounter {
     margin: 50px auto 100px;
-    width: 306px; }
+    width: 326px;
+    height: 170px; }
   #flipcounter .digit {
     width: 100px;
     height: 150px;
@@ -6501,7 +6502,8 @@ a.text-gray-dark:hover {
     width: 201px; }
   #flipcounter {
     margin: 50px auto 100px;
-    width: 201px; }
+    width: 221px;
+    height: 140px; }
   #flipcounter .digit {
     width: 65px;
     height: 120px;
