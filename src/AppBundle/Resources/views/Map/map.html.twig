@@ -9,9 +9,9 @@
 
         <title>death.bike &mdash; Getötete Radfahrer im Jahr {{ year }}</title>
 
-        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/death.css') }}" />
-        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/leaflet/leaflet.css') }}" />
-        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/extramarkers/extramarkers.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bundles/app/css/death.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bundles/app/css/leaflet/leaflet.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bundles/app/css/extramarkers/extramarkers.min.css') }}" />
 
         <style type="text/css">
             html,
@@ -32,9 +32,9 @@
 
         </div>
 
-        <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.sleep.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/extramarkers/extramarkers.min.js') }}"></script>
+        <script src="{{ asset('/bundles/app/js/leaflet/leaflet.js') }}"></script>
+        <script src="{{ asset('/bundles/app/js/leaflet/leaflet.sleep.js') }}"></script>
+        <script src="{{ asset('/bundles/app/js/extramarkers/extramarkers.min.js') }}"></script>
 
         <script>
             var map = L
@@ -63,6 +63,6 @@
             {% endfor %}
         </script>
 
-        {{ include('CalderaDeathBikeBundle:Includes:piwik.html.twig') }}
+        {{ include('AppBundle:Includes:piwik.html.twig') }}
     </body>
 </html>

@@ -1,8 +1,8 @@
 <?php
 
-namespace Caldera\Bundle\DeathBikeBundle\Controller;
+namespace AppBundle\Controller;
 
-use Caldera\Bundle\DeathBikeBundle\Entity\Incident;
+use AppBundle\Entity\Incident;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
@@ -27,7 +27,7 @@ class DefaultController extends Controller
         $counterString = sprintf('%03d', $counter);
 
         return $this->render(
-            'CalderaDeathBikeBundle:Default:list.html.twig',
+            'AppBundle:Default:list.html.twig',
             [
                 'year' => $year,
                 'counter' => $counterString,
@@ -49,7 +49,7 @@ class DefaultController extends Controller
         $incidentList = $this->getEntityList($year);
 
         return $this->render(
-            'CalderaDeathBikeBundle:Map:map.html.twig',
+            'AppBundle:Map:map.html.twig',
             [
                 'year' => $year,
                 'incidentList' => $incidentList
@@ -62,7 +62,7 @@ class DefaultController extends Controller
      */
     public function faqAction(Request $request): Response
     {
-        return $this->render('CalderaDeathBikeBundle:Default:faq.html.twig');
+        return $this->render('AppBundle:Default:faq.html.twig');
     }
 
     /**
@@ -81,7 +81,7 @@ class DefaultController extends Controller
         $counterString = sprintf('%03d', $counter);
 
         return $this->render(
-            'CalderaDeathBikeBundle:Default:index.html.twig',
+            'AppBundle:Default:index.html.twig',
             [
                 'year' => $year,
                 'counter' => $counterString,
@@ -106,7 +106,7 @@ class DefaultController extends Controller
 
         foreach ($jsonList as $json) {
             /** @var Incident $entity */
-            $entity = $this->get('jms_serializer')->deserialize($json, 'Caldera\Bundle\DeathBikeBundle\Entity\Incident', 'json');
+            $entity = $this->get('jms_serializer')->deserialize($json, 'AppBundle\Entity\Incident', 'json');
             array_unshift($entityList, $entity);
         }
 

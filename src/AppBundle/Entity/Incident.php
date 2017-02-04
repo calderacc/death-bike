@@ -1,6 +1,6 @@
 <?php
 
-namespace Caldera\Bundle\DeathBikeBundle\Entity;
+namespace AppBundle\Entity;
 
 use JMS\Serializer\Annotation as JMS;
 

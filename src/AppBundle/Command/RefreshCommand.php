@@ -1,6 +1,6 @@
 <?php
 
-namespace Caldera\Bundle\DeathBikeBundle\Command;
+namespace AppBundle\Command;
 
 use Curl\Curl;
 use Doctrine\ORM\EntityManager;

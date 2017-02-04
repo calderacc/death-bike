@@ -9,9 +9,9 @@
 
         <title>{% block title %}{% endblock %}</title>
 
-        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/death.css') }}" />
-        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/leaflet/leaflet.css') }}" />
-        <link rel="stylesheet" href="{{ asset('/bundles/calderadeathbike/css/extramarkers/extramarkers.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bundles/app/css/death.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bundles/app/css/leaflet/leaflet.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/bundles/app/css/extramarkers/extramarkers.min.css') }}" />
     </head>
     <body>
         <a class="hidden-sm-down" href="http://sqi.be/lhqsy">
@@ -43,17 +43,17 @@
 
             {% block content %}{% endblock %}
 
-        {{ include('CalderaDeathBikeBundle:Includes:footer.html.twig') }}
+        {{ include('AppBundle:Includes:footer.html.twig') }}
 
-        <script src="{{ asset('/bundles/calderadeathbike/js/jquery/jquery-3.1.1.min.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/tether/tether.min.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/bootstrap/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/leaflet/leaflet.sleep.js') }}"></script>
-        <script src="{{ asset('/bundles/calderadeathbike/js/extramarkers/extramarkers.min.js') }}"></script>
+        <script src="{{ asset('/bundles/app/js/jquery/jquery-3.1.1.min.js') }}"></script>
+        <script src="{{ asset('/bundles/app/js/tether/tether.min.js') }}"></script>
+        <script src="{{ asset('/bundles/app/js/bootstrap/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('/bundles/app/js/leaflet/leaflet.js') }}"></script>
+        <script src="{{ asset('/bundles/app/js/leaflet/leaflet.sleep.js') }}"></script>
+        <script src="{{ asset('/bundles/app/js/extramarkers/extramarkers.min.js') }}"></script>
 
         {% block scripts %}{% endblock %}
 
-        {{ include('CalderaDeathBikeBundle:Includes:piwik.html.twig') }}
+        {{ include('AppBundle:Includes:piwik.html.twig') }}
     </body>
 </html>
