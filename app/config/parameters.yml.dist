@@ -7,6 +7,13 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: deathbike
+    database_user: root
+    database_password: root
+
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
 
