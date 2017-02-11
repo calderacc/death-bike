@@ -3,6 +3,46 @@
 {% block title %}Tödlich verunglückte Radfahrer im Jahr {{ year }} &mdash; death.bike{% endblock %}
 
 {% block content %}
-    <div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Geschlecht
+                        </th>
+                        <th>
+                            Anzahl
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            männlich
+                        </td>
+                        <td>
+                            {{ statistic.sex.m }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            weiblich
+                        </td>
+                        <td>
+                            {{ statistic.sex.f }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            keine Angabe
+                        </td>
+                        <td>
+                            {{ statistic.sex.unknown }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}

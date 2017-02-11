@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Incident;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,11 +15,40 @@ class StatisticController extends AbstractController
             $year = $dateTime->format('Y');
         }
 
+        $incidentList = $this->getIncidentList($year);
+
+        $statistic = $this->calculateStatistic($incidentList);
+
         return $this->render(
             'AppBundle:Statistic:index.html.twig',
             [
                 'year' => $year,
+                'statistic' => $statistic,
             ]
         );
+    }
+
+    protected function calculateStatistic(array $incidentList): array
+    {
+        $statistic = [];
+
+        $statistic['sex'] = [
+            'f' => 0,
+            'm' => 0,
+            'unknown' => 0,
+        ];
+
+        /** @var Incident $incident */
+        foreach ($incidentList as $incident) {
+            $sex = $incident->getAccidentSex();
+
+            if (!$sex) {
+                $sex = 'unknwon';
+            }
+
+            ++$statistic['sex'][$sex];
+        }
+
+        return $statistic;
     }
 }
