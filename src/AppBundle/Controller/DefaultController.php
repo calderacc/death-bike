@@ -11,9 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/list/{year}", name="list")
-     */
     public function listAction(Request $request, int $year = null): Response
     {
         if (!$year) {
@@ -36,9 +33,6 @@ class DefaultController extends Controller
         );
     }
 
-    /**
-     * @Route("/map/{year}", name="map")
-     */
     public function mapAction(Request $request, int $year = null): Response
     {
         if (!$year) {
@@ -57,17 +51,11 @@ class DefaultController extends Controller
         );
     }
 
-    /**
-     * @Route("/faq", name="faq")
-     */
     public function faqAction(Request $request): Response
     {
         return $this->render('AppBundle:Default:faq.html.twig');
     }
 
-    /**
-     * @Route("/{year}", name="index")
-     */
     public function indexAction(Request $request, int $year = null): Response
     {
         if (!$year) {

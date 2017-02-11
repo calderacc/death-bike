@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing
+        http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="faq" path="/faq">
+        <default key="_controller">AppBundle:Default:faq</default>
+    </route>
+
+    <route id="list" path="/list/{year}">
+        <default key="_controller">AppBundle:Default:list</default>
+        <default key="year">null</default>
+    </route>
+
+    <route id="map" path="/map/{year}">
+        <default key="_controller">AppBundle:Default:map</default>
+        <default key="year">null</default>
+    </route>
+
+    <route id="statistic" path="/statistic/{year}">
+        <default key="_controller">AppBundle:Statistic:index</default>
+        <default key="year">null</default>
+    </route>
+
+    <route id="index" path="/{year}">
+        <default key="_controller">AppBundle:Default:index</default>
+        <default key="year">null</default>
+    </route>
+</routes>
