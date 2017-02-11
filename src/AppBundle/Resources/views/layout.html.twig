@@ -19,31 +19,14 @@
         </a>
 
         <div class="container-fluid" style="min-height: 50vh;">
-            <div class="row mt-2">
-                <div class="col-6 offset-3">
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('index') }}">
-                                Karte
-                            </a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('list') }}">
-                                Liste
-                            </a>
-                        </li>
+        {{ include('AppBundle:Includes:header.html.twig') }}
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('faq') }}">FAQ</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
 
         {{ include('AppBundle:Includes:footer.html.twig') }}
+
+        </div>
 
         <script src="{{ asset('/bundles/app/js/jquery/jquery-3.1.1.min.js') }}"></script>
         <script src="{{ asset('/bundles/app/js/tether/tether.min.js') }}"></script>
