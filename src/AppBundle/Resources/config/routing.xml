@@ -10,21 +10,21 @@
 
     <route id="list" path="/list/{year}">
         <default key="_controller">AppBundle:Default:list</default>
-        <default key="year">null</default>
+        <default key="year">2017</default>
     </route>
 
     <route id="map" path="/map/{year}">
         <default key="_controller">AppBundle:Default:map</default>
-        <default key="year">null</default>
+        <default key="year">2017</default>
     </route>
 
     <route id="statistic" path="/statistic/{year}">
         <default key="_controller">AppBundle:Statistic:index</default>
-        <default key="year">null</default>
+        <default key="year">2017</default>
     </route>
 
     <route id="index" path="/{year}">
         <default key="_controller">AppBundle:Default:index</default>
-        <default key="year">null</default>
+        <default key="year">2017</default>
     </route>
 </routes>
