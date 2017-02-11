@@ -2,191 +2,296 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ORM\Entity()
+ * @ORM\Table(name="incident")
  * @JMS\ExclusionPolicy("all")
  */
 class Incident
 {
-    const INCIDENT_RAGE = 'rage';
-    const INCIDENT_ROADWORKS = 'roadworks';
-    const INCIDENT_DANGER = 'danger';
-    const INCIDENT_POLICE = 'police';
-    const INCIDENT_ACCIDENT = 'accident';
-    const INCIDENT_DEADLY_ACCIDENT = 'deadly_accident';
-    const INCIDENT_INFRASTRUCTURE = 'infrastructure';
-
-    const DANGER_LEVEL_NONE = 'none';
-    const DANGER_LEVEL_LOW = 'low';
-    const DANGER_LEVEL_NORMAL = 'normal';
-    const DANGER_LEVEL_HIGH = 'high';
-
-    const GEOMETRY_POLYLINE = 'polyline';
-    const GEOMETRY_MARKER = 'marker';
-
     /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
      * @JMS\Expose
      * @JMS\Type("integer")
      */
     protected $id;
 
     /**
-     * @JMS\Expose
-     * @JMS\Type("string")
-     */
-    protected $city;
-
-    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $slug;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $title;
 
     /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $description;
 
     /**
+     * @ORM\Column(type="string", length=255)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $geometryType;
 
     /**
+     * @ORM\Column(type="string", length=255)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $incidentType;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $dangerLevel;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $address;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $street;
 
     /**
+     * @ORM\Column(type="string", length=16, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $houseNumber;
 
     /**
+     * @ORM\Column(type="string", length=5, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $zipCode;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $suburb;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $district;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
+    protected $town;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
+    protected $village;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
+    protected $city;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $polyline;
 
     /**
+     * @ORM\Column(type="float", nullable=true)
      * @JMS\Expose
      * @JMS\Type("float")
      */
     protected $latitude = null;
 
     /**
+     * @ORM\Column(type="float", nullable=true)
      * @JMS\Expose
      * @JMS\Type("float")
      */
     protected $longitude = null;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
      * @JMS\Expose
-     * @JMS\Type("datetime")
+     * @JMS\Type("DateTime")
      */
     protected $dateTime;
 
     /**
+     * @ORM\Column(type="boolean")
      * @JMS\Expose
      * @JMS\Type("boolean")
      */
     protected $expires;
 
     /**
+     * @ORM\Column(type="datetime")
      * @JMS\Expose
-     * @JMS\Type("datetime")
+     * @JMS\Type("DateTime")
      */
     protected $visibleFrom;
 
     /**
+     * @ORM\Column(type="datetime")
      * @JMS\Expose
-     * @JMS\Type("datetime")
+     * @JMS\Type("DateTime")
      */
     protected $visibleTo;
 
     /**
+     * @ORM\Column(type="boolean")
      * @JMS\Expose
      * @JMS\Type("boolean")
-
      */
     protected $enabled = true;
 
     /**
+     * @ORM\Column(type="datetime")
      * @JMS\Expose
-     * @JMS\Type("datetime")
+     * @JMS\Type("DateTime")
      */
     protected $creationDateTime;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $permalink;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    protected $views = 0;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
      * @JMS\Expose
      * @JMS\Type("string")
      */
     protected $streetviewLink;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
+    protected $accidentType = null;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
+    protected $accidentLocation = null;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
+    protected $accidentInfrastructure = null;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
+    protected $accidentOpponent = null;
+
+    /**
+     * @ORM\Column(type="string", length=1, nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("string")
+     */
+    protected $accidentSex = null;
+
+    /**
+     * @ORM\Column(type="integer", length=255, nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("integer")
+     */
+    protected $accidentAge = null;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("boolean")
+     */
+    protected $accidentPedelec = null;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("boolean")
+     */
+    protected $accidentHelmet = null;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("float")
+     */
+    protected $accidentAlcohol = null;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     * @JMS\Expose
+     * @JMS\Type("boolean")
+     */
+    protected $accidentCyclistCaused = null;
+
     public function __construct()
     {
-        $this->creationDateTime = new \DateTime();
     }
 
-    public function getId(): int
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setLatitude(float $latitude): Incident
+    public function setLatitude(float $latitude): CoordinateInterface
     {
         $this->latitude = $latitude;
 
@@ -198,7 +303,7 @@ class Incident
         return $this->latitude;
     }
 
-    public function setLongitude(float $longitude): Incident
+    public function setLongitude(float $longitude): CoordinateInterface
     {
         $this->longitude = $longitude;
 
@@ -210,526 +315,480 @@ class Incident
         return $this->longitude;
     }
 
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return Incident
-     */
-    public function setSlug($slug)
+    public function getPin(): string
+    {
+        return $this->latitude . ',' . $this->longitude;
+    }
+
+    public function getViews(): int
+    {
+        return $this->views;
+    }
+
+    public function setViews(int $views): ViewableInterface
+    {
+        $this->views = $views;
+
+        return $this;
+    }
+
+    public function incViews(): int
+    {
+        return ++$this->views;
+    }
+
+    public function setSlug(string $slug): Incident
     {
         $this->slug = $slug;
 
         return $this;
     }
 
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
+    public function getSlug(): ?string
     {
         return $this->slug;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Incident
-     */
-    public function setTitle($title)
+    public function setTitle(string $title): Incident
     {
         $this->title = $title;
 
         return $this;
     }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Incident
-     */
-    public function setDescription($description)
+    public function setDescription(string $description): Incident
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * Set geometryType
-     *
-     * @param string $geometryType
-     *
-     * @return Incident
-     */
-    public function setGeometryType($geometryType)
+    public function setGeometryType(string $geometryType): Incident
     {
         $this->geometryType = $geometryType;
 
         return $this;
     }
 
-    /**
-     * Get geometryType
-     *
-     * @return string
-     */
-    public function getGeometryType()
+    public function getGeometryType(): ?string
     {
         return $this->geometryType;
     }
 
-    /**
-     * Set incidentType
-     *
-     * @param string $incidentType
-     *
-     * @return Incident
-     */
-    public function setIncidentType($incidentType)
+    public function setIncidentType(string $incidentType): Incident
     {
         $this->incidentType = $incidentType;
 
         return $this;
     }
 
-    /**
-     * Get incidentType
-     *
-     * @return string
-     */
-    public function getIncidentType()
+    public function getIncidentType(): ?string
     {
         return $this->incidentType;
     }
 
-    /**
-     * Set dangerLevel
-     *
-     * @param string $dangerLevel
-     *
-     * @return Incident
-     */
-    public function setDangerLevel($dangerLevel)
+    public function setDangerLevel(string $dangerLevel): Incident
     {
         $this->dangerLevel = $dangerLevel;
 
         return $this;
     }
 
-    /**
-     * Get dangerLevel
-     *
-     * @return string
-     */
-    public function getDangerLevel()
+    public function getDangerLevel(): ?string
     {
         return $this->dangerLevel;
     }
 
-    /**
-     * Set address
-     *
-     * @param string $address
-     *
-     * @return Incident
-     */
-    public function setAddress($address)
+    public function setAddress(string $address): Incident
     {
         $this->address = $address;
 
         return $this;
     }
 
-    /**
-     * Get address
-     *
-     * @return string
-     */
-    public function getAddress()
+    public function getAddress(): ?string
     {
         return $this->address;
     }
 
-    /**
-     * Set street
-     *
-     * @param string $street
-     *
-     * @return Incident
-     */
-    public function setStreet($street)
+    public function setStreet(string $street): Incident
     {
         $this->street = $street;
 
         return $this;
     }
 
-    /**
-     * Get street
-     *
-     * @return string
-     */
-    public function getStreet()
+    public function getStreet(): ?string
     {
         return $this->street;
     }
 
-    /**
-     * Set houseNumber
-     *
-     * @param string $houseNumber
-     *
-     * @return Incident
-     */
-    public function setHouseNumber($houseNumber)
+    public function setHouseNumber(string $houseNumber): Incident
     {
         $this->houseNumber = $houseNumber;
 
         return $this;
     }
 
-    /**
-     * Get houseNumber
-     *
-     * @return string
-     */
-    public function getHouseNumber()
+    public function getHouseNumber(): ?string
     {
         return $this->houseNumber;
     }
 
-    /**
-     * Set zipCode
-     *
-     * @param string $zipCode
-     *
-     * @return Incident
-     */
-    public function setZipCode($zipCode)
+    public function setZipCode(string $zipCode): Incident
     {
         $this->zipCode = $zipCode;
 
         return $this;
     }
 
-    /**
-     * Get zipCode
-     *
-     * @return string
-     */
-    public function getZipCode()
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
 
-    /**
-     * Set suburb
-     *
-     * @param string $suburb
-     *
-     * @return Incident
-     */
-    public function setSuburb($suburb)
+    public function setSuburb(string $suburb): Incident
     {
         $this->suburb = $suburb;
 
         return $this;
     }
 
-    /**
-     * Get suburb
-     *
-     * @return string
-     */
-    public function getSuburb()
+    public function getSuburb(): ?string
     {
         return $this->suburb;
     }
 
-    /**
-     * Set district
-     *
-     * @param string $district
-     *
-     * @return Incident
-     */
-    public function setDistrict($district)
+    public function setDistrict(string $district): Incident
     {
         $this->district = $district;
 
         return $this;
     }
 
-    /**
-     * Get district
-     *
-     * @return string
-     */
-    public function getDistrict()
+    public function getDistrict(): ?string
     {
         return $this->district;
     }
 
-    /**
-     * Set polyline
-     *
-     * @param string $polyline
-     *
-     * @return Incident
-     */
-    public function setPolyline($polyline)
+    public function setTown(string $town): Incident
     {
-        $this->polyline = $polyline;
+        $this->town = $town;
+    }
+
+    public function getTown(): ?string
+    {
+        return $this->town;
+    }
+
+    public function setVillage(string $village): Incident
+    {
+        $this->village = $village;
 
         return $this;
     }
 
-    /**
-     * Get polyline
-     *
-     * @return string
-     */
-    public function getPolyline()
+    public function getVillage(): ?string
     {
-        return $this->polyline;
+        return $this->village;
     }
 
-    /**
-     * Set dateTime
-     *
-     * @param \DateTime $dateTime
-     *
-     * @return Incident
-     */
-    public function setDateTime($dateTime)
-    {
-        $this->dateTime = $dateTime;
-
-        return $this;
-    }
-
-    /**
-     * Get dateTime
-     *
-     * @return \DateTime
-     */
-    public function getDateTime()
-    {
-        return $this->dateTime;
-    }
-
-    /**
-     * Set expires
-     *
-     * @param boolean $expires
-     *
-     * @return Incident
-     */
-    public function setExpires($expires)
-    {
-        $this->expires = $expires;
-
-        return $this;
-    }
-
-    /**
-     * Get expires
-     *
-     * @return boolean
-     */
-    public function getExpires()
-    {
-        return $this->expires;
-    }
-
-    /**
-     * Set visibleFrom
-     *
-     * @param \DateTime $visibleFrom
-     *
-     * @return Incident
-     */
-    public function setVisibleFrom($visibleFrom)
-    {
-        $this->visibleFrom = $visibleFrom;
-
-        return $this;
-    }
-
-    /**
-     * Get visibleFrom
-     *
-     * @return \DateTime
-     */
-    public function getVisibleFrom()
-    {
-        return $this->visibleFrom;
-    }
-
-    /**
-     * Set visibleTo
-     *
-     * @param \DateTime $visibleTo
-     *
-     * @return Incident
-     */
-    public function setVisibleTo($visibleTo)
-    {
-        $this->visibleTo = $visibleTo;
-
-        return $this;
-    }
-
-    /**
-     * Get visibleTo
-     *
-     * @return \DateTime
-     */
-    public function getVisibleTo()
-    {
-        return $this->visibleTo;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     *
-     * @return Incident
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set creationDateTime
-     *
-     * @param \DateTime $creationDateTime
-     *
-     * @return Incident
-     */
-    public function setCreationDateTime($creationDateTime)
-    {
-        $this->creationDateTime = $creationDateTime;
-
-        return $this;
-    }
-
-    /**
-     * Get creationDateTime
-     *
-     * @return \DateTime
-     */
-    public function getCreationDateTime()
-    {
-        return $this->creationDateTime;
-    }
-
-    /**
-     * Set permalink
-     *
-     * @param string $permalink
-     *
-     * @return Incident
-     */
-    public function setPermalink($permalink)
-    {
-        $this->permalink = $permalink;
-
-        return $this;
-    }
-
-    /**
-     * Get permalink
-     *
-     * @return string
-     */
-    public function getPermalink()
-    {
-        return $this->permalink;
-    }
-
-    /**
-     * Set streetviewLink
-     *
-     * @param string $streetviewLink
-     *
-     * @return Incident
-     */
-    public function setStreetviewLink($streetviewLink)
-    {
-        $this->streetviewLink = $streetviewLink;
-
-        return $this;
-    }
-
-    /**
-     * Get streetviewLink
-     *
-     * @return string
-     */
-    public function getStreetviewLink()
-    {
-        return $this->streetviewLink;
-    }
-
-    /**
-     * @param string $city
-     * @return Incident
-     */
-    public function setCity(string $city = null): Incident
+    public function setCity(string $city): Incident
     {
         $this->city = $city;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getCity(): ?string
     {
         return $this->city;
+    }
+
+    public function setPolyline($polyline): Incident
+    {
+        $this->polyline = $polyline;
+
+        return $this;
+    }
+
+    public function getPolyline(): ?string
+    {
+        return $this->polyline;
+    }
+
+    public function setDateTime(\DateTime $dateTime): Incident
+    {
+        $this->dateTime = $dateTime;
+
+        return $this;
+    }
+
+    public function getDateTime(): ?\DateTime
+    {
+        return $this->dateTime;
+    }
+
+    public function setExpires(bool $expires): Incident
+    {
+        $this->expires = $expires;
+
+        return $this;
+    }
+
+    public function getExpires(): ?bool
+    {
+        return $this->expires;
+    }
+
+    public function setVisibleFrom(\DateTime $visibleFrom): Incident
+    {
+        $this->visibleFrom = $visibleFrom;
+
+        return $this;
+    }
+
+    public function getVisibleFrom(): ?\DateTime
+    {
+        return $this->visibleFrom;
+    }
+
+    public function setVisibleTo(\DateTime $visibleTo): Incident
+    {
+        $this->visibleTo = $visibleTo;
+
+        return $this;
+    }
+
+    public function getVisibleTo(): ?\DateTime
+    {
+        return $this->visibleTo;
+    }
+
+    public function setEnabled(bool $enabled): Incident
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setCreationDateTime(\DateTime $creationDateTime): Incident
+    {
+        $this->creationDateTime = $creationDateTime;
+
+        return $this;
+    }
+
+    public function getCreationDateTime(): ?\DateTime
+    {
+        return $this->creationDateTime;
+    }
+
+    public function setPermalink(string $permalink): Incident
+    {
+        $this->permalink = $permalink;
+
+        return $this;
+    }
+
+    public function getPermalink(): ?string
+    {
+        return $this->permalink;
+    }
+
+    public function setStreetviewLink(string $streetviewLink): Incident
+    {
+        $this->streetviewLink = $streetviewLink;
+
+        return $this;
+    }
+
+    public function getStreetviewLink(): ?string
+    {
+        return $this->streetviewLink;
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\SerializedName("Timestamp")
+     */
+    public function getTimestamp(): int
+    {
+        return $this->dateTime->format('U');
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\SerializedName("CreationTimestamp")
+     */
+    public function getCreationTimestamp(): int
+    {
+        return $this->creationDateTime->format('U');
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\SerializedName("VisibleFromTimestamp")
+     */
+    public function getVisibleFromTimestamp(): int
+    {
+        return $this->creationDateTime->format('U');
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\SerializedName("VisibleToTimestamp")
+     */
+    public function getVisibleToTimestamp(): int
+    {
+        return $this->creationDateTime->format('U');
+    }
+
+    public function getCyclewaysId(): string
+    {
+        if (!$this->permalink) {
+            return 'undefined';
+        }
+
+        $code = substr($this->permalink, -5);
+
+        $cyclewaysId = strtoupper($code);
+
+        return $cyclewaysId;
+    }
+
+    public function getAccidentType(): ?string
+    {
+        return $this->accidentType;
+    }
+
+    public function setAccidentType(string $accidentType): Incident
+    {
+        $this->accidentType = $accidentType;
+
+        return $this;
+    }
+
+    public function getAccidentLocation(): ?string
+    {
+        return $this->accidentLocation;
+    }
+
+    public function setAccidentLocation(string $accidentLocation): Incident
+    {
+        $this->accidentLocation = $accidentLocation;
+
+        return $this;
+    }
+
+    public function getAccidentInfrastructure(): ?string
+    {
+        return $this->accidentInfrastructure;
+    }
+
+    public function setAccidentInfrastructure(string $accidentInfrastructure): Incident
+    {
+        $this->accidentInfrastructure = $accidentInfrastructure;
+
+        return $this;
+    }
+
+    public function getAccidentOpponent(): ?string
+    {
+        return $this->accidentOpponent;
+    }
+
+    public function setAccidentOpponent(string $accidentOpponent): Incident
+    {
+        $this->accidentOpponent = $accidentOpponent;
+
+        return $this;
+    }
+
+    public function getAccidentSex(): ?string
+    {
+        return $this->accidentSex;
+    }
+
+    public function setAccidentSex(string $accidentSex): Incident
+    {
+        $this->accidentSex = $accidentSex;
+
+        return $this;
+    }
+
+    public function getAccidentAge(): ?int
+    {
+        return $this->accidentAge;
+    }
+
+    public function setAccidentAge(int $accidentAge): Incident
+    {
+        $this->accidentAge = $accidentAge;
+
+        return $this;
+    }
+
+    public function getAccidentPedelec(): ?bool
+    {
+        return $this->accidentPedelec;
+    }
+
+    public function setAccidentPedelec(bool $accidentPedelec): Incident
+    {
+        $this->accidentPedelec = $accidentPedelec;
+
+        return $this;
+    }
+
+    public function getAccidentHelmet(): ?bool
+    {
+        return $this->accidentHelmet;
+    }
+
+    public function setAccidentHelmet(bool $accidentHelmet): Incident
+    {
+        $this->accidentHelmet = $accidentHelmet;
+
+        return $this;
+    }
+
+    public function getAccidentAlcohol(): ?float
+    {
+        return $this->accidentAlcohol;
+    }
+
+    public function setAccidentAlcohol(float $accidentAlcohol): Incident
+    {
+        $this->accidentAlcohol = $accidentAlcohol;
+
+        return $this;
+    }
+
+    public function getAccidentCyclistCaused(): ?string
+    {
+        return $this->accidentCyclistCaused;
+    }
+
+    public function setAccidentCyclistCaused(string $accidentCyclistCaused): Incident
+    {
+        $this->accidentCyclistCaused = $accidentCyclistCaused;
+
+        return $this;
     }
 }
