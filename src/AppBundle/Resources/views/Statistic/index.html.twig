@@ -5,11 +5,70 @@
 {% block content %}
     <div class="row">
         <div class="col-md-12">
+            <h3>
+                Geschlecht
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        Geschlecht
+                    </th>
+                    <th>
+                        Anzahl
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        männlich
+                    </td>
+                    <td>
+                        {{ statistic.sex.m }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        weiblich
+                    </td>
+                    <td>
+                        {{ statistic.sex.f }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        keine Angabe
+                    </td>
+                    <td>
+                        {{ statistic.sex.unknown }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>
+                Altersgruppen
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
             <table class="table">
                 <thead>
                     <tr>
                         <th>
-                            Geschlecht
+                            Altersgruppe
                         </th>
                         <th>
                             Anzahl
@@ -19,26 +78,90 @@
                 <tbody>
                     <tr>
                         <td>
-                            männlich
+                            0 bis 10 Jahre
                         </td>
                         <td>
-                            {{ statistic.sex.m }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            weiblich
-                        </td>
-                        <td>
-                            {{ statistic.sex.f }}
+                            {{ statistic.age.10 }}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            keine Angabe
+                            11 bis 20 Jahre
                         </td>
                         <td>
-                            {{ statistic.sex.unknown }}
+                            {{ statistic.age.20 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            21 bis 30 Jahre
+                        </td>
+                        <td>
+                            {{ statistic.age.30 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            31 bis 40 Jahre
+                        </td>
+                        <td>
+                            {{ statistic.age.40 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            41 bis 50 Jahre
+                        </td>
+                        <td>
+                            {{ statistic.age.50 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            51 bis 60 Jahre
+                        </td>
+                        <td>
+                            {{ statistic.age.60 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            61 bis 70 Jahre
+                        </td>
+                        <td>
+                            {{ statistic.age.70 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            71 bis 80 Jahre
+                        </td>
+                        <td>
+                            {{ statistic.age.80 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            81 bis 90 Jahre
+                        </td>
+                        <td>
+                            {{ statistic.age.90 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            91 bis 100 Jahre
+                        </td>
+                        <td>
+                            {{ statistic.age.100 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            unbekannt
+                        </td>
+                        <td>
+                            {{ statistic.age.unkown }}
                         </td>
                     </tr>
                 </tbody>

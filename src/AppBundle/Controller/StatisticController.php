@@ -38,6 +38,20 @@ class StatisticController extends AbstractController
             'unknown' => 0,
         ];
 
+        $statistic['age'] = [
+            10 => 0,
+            20 => 0,
+            30 => 0,
+            40 => 0,
+            50 => 0,
+            60 => 0,
+            70 => 0,
+            80 => 0,
+            90 => 0,
+            100 => 0,
+            'unkown' => 0,
+        ];
+
         /** @var Incident $incident */
         foreach ($incidentList as $incident) {
             $sex = $incident->getAccidentSex();
@@ -47,7 +61,23 @@ class StatisticController extends AbstractController
             }
 
             ++$statistic['sex'][$sex];
+
+            /*************************/
+
+            $age = $incident->getAccidentAge();
+
+            if (!$age) {
+                $ageCluster = 'unkown';
+            } else {
+                $ageCluster = ceil($age/10.0)*10;
+            }
+
+            ++$statistic['age'][$ageCluster];
         }
+
+
+
+
 
         return $statistic;
     }
