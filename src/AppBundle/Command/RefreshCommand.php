@@ -2,6 +2,7 @@
 
 namespace AppBundle\Command;
 
+use AppBundle\Entity\Incident;
 use Curl\Curl;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -38,6 +39,11 @@ class RefreshCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $serializer = $this->getContainer()->get('jms_serializer');
+
+        /** @var EntityManager $manager */
+        $manager = $this->getContainer()->get('doctrine')->getManager();
+
         $year = $input->getArgument('year');
 
         $apiUrl = $this->getContainer()->getParameter('cycleways.api');
@@ -47,23 +53,25 @@ class RefreshCommand extends ContainerAwareCommand
         $curl->get($apiUrl);
 
         $jsonReponse = $curl->response;
-        $deathList = json_decode($jsonReponse);
+        $incidentList = json_decode($jsonReponse);
 
-        $entityList = [];
-
-        $progress = new ProgressBar($output, count($deathList));
+        $progress = new ProgressBar($output, count($incidentList));
         $progress->start();
 
-        foreach ($deathList as $death) {
-            $entityList[] = json_encode($death);
+        foreach ($incidentList as $json) {
+            /** @var Incident $incident */
+            $incident = $serializer->deserialize(json_encode($json), 'AppBundle\Entity\Incident', 'json');
+
+            //if ($manager->getUnitOfWork()->isEntityScheduled($incident)) {
+                $manager->merge($incident);
+            //} else {
+            //    $manager->persist($incident);
+            //}
+
             $progress->advance();
         }
 
-        $cache = new FilesystemAdapter();
-
-        $cacheItem = $cache->getItem('item-list-' . $year);
-        $cacheItem->set($entityList);
-        $cache->save($cacheItem);
+        $manager->flush();
 
         $progress->finish();
     }

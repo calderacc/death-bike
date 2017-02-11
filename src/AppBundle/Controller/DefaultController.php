@@ -21,7 +21,7 @@ class DefaultController extends Controller
             $year = $dateTime->format('Y');
         }
 
-        $incidentList = $this->getEntityList($year);
+        $incidentList = $this->getIncidentList($year);
 
         $counter = count($incidentList);
         $counterString = sprintf('%03d', $counter);
@@ -46,7 +46,7 @@ class DefaultController extends Controller
             $year = $dateTime->format('Y');
         }
 
-        $incidentList = $this->getEntityList($year);
+        $incidentList = $this->getIncidentList($year);
 
         return $this->render(
             'AppBundle:Map:map.html.twig',
@@ -75,7 +75,7 @@ class DefaultController extends Controller
             $year = $dateTime->format('Y');
         }
 
-        $incidentList = $this->getEntityList($year);
+        $incidentList = $this->getIncidentList($year);
 
         $counter = count($incidentList);
         $counterString = sprintf('%03d', $counter);
@@ -90,25 +90,9 @@ class DefaultController extends Controller
         );
     }
 
-    protected function getEntityList(int $year): array
+    protected function getIncidentList(int $year): array
     {
-        $cache = new FilesystemAdapter();
-
-        $cacheItem = $cache->getItem('item-list-' . $year);
-
-        if (!$cacheItem->isHit()) {
-            return [];
-        }
-
-        $jsonList = $cacheItem->get();
-
-        $entityList = [];
-
-        foreach ($jsonList as $json) {
-            /** @var Incident $entity */
-            $entity = $this->get('jms_serializer')->deserialize($json, 'AppBundle\Entity\Incident', 'json');
-            array_unshift($entityList, $entity);
-        }
+        $entityList = $this->getDoctrine()->getRepository('AppBundle:Incident')->findBy([], ['dateTime' => 'DESC']);
 
         return $entityList;
     }
