@@ -2,11 +2,10 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class DefaultController extends AbstractController
 {
     public function listAction(Request $request, int $year = null): Response
     {
@@ -73,12 +72,5 @@ class DefaultController extends Controller
                 'incidentList' => $incidentList
             ]
         );
-    }
-
-    protected function getIncidentList(int $year): array
-    {
-        $entityList = $this->getDoctrine()->getRepository('AppBundle:Incident')->findBy([], ['dateTime' => 'DESC']);
-
-        return $entityList;
     }
 }
