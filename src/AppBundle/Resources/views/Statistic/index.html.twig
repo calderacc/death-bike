@@ -302,4 +302,111 @@
             </table>
         </div>
     </div>
+
+    <div class="row mt-5">
+        <div class="col-xs-12 col-sm-8 col-md-6 offset-sm-2 offset-md-3">
+            <h3 class="text-center">
+                Infrastruktur
+            </h3>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-xs-12 col-sm-8 col-md-6 offset-sm-2 offset-md-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Infrastruktur
+                        </th>
+                        <th>
+                            Anzahl
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Fahrbahn
+                        </td>
+                        <td>
+                            {{ statistic.infrastructure[constant('AppBundle\\Entity\\Incident::ACCIDENT_INFRASTRUCTURE_ROAD')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Radweg
+                        </td>
+                        <td>
+                            {{ statistic.infrastructure[constant('AppBundle\\Entity\\Incident::ACCIDENT_INFRASTRUCTURE_CYCLEPATH')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Gehweg
+                        </td>
+                        <td>
+                            {{ statistic.infrastructure[constant('AppBundle\\Entity\\Incident::ACCIDENT_INFRASTRUCTURE_SIDEWALK')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            freigegebener Gehweg
+                        </td>
+                        <td>
+                            {{ statistic.infrastructure[constant('AppBundle\\Entity\\Incident::ACCIDENT_INFRASTRUCTURE_FREEDSIDEWALK')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            gemeinsamer Fuß- und Radweg
+                        </td>
+                        <td>
+                            {{ statistic.infrastructure[constant('AppBundle\\Entity\\Incident::ACCIDENT_INFRASTRUCTURE_COMBINED')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Radfahrstreifen
+                        </td>
+                        <td>
+                            {{ statistic.infrastructure[constant('AppBundle\\Entity\\Incident::ACCIDENT_INFRASTRUCTURE_RADFAHRSTREIFEN')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Schutzstreifen
+                        </td>
+                        <td>
+                            {{ statistic.infrastructure[constant('AppBundle\\Entity\\Incident::ACCIDENT_INFRASTRUCTURE_SCHUTZSTREIFEN')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Fahrradstraße
+                        </td>
+                        <td>
+                            {{ statistic.infrastructure[constant('AppBundle\\Entity\\Incident::ACCIDENT_INFRASTRUCTURE_FAHRRADSTRASSE')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            andere / abseits der Straße
+                        </td>
+                        <td>
+                            {{ statistic.infrastructure[constant('AppBundle\\Entity\\Incident::ACCIDENT_INFRASTRUCTURE_OTHER')] }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
