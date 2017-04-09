@@ -52,6 +52,34 @@ class StatisticController extends AbstractController
             'unkown' => 0,
         ];
 
+        $statistic['accidentType'] = [
+            Incident::ACCIDENT_TYPE_SOLO => 0,
+            Incident::ACCIDENT_TYPE_UNKNOWN => 0,
+            Incident::ACCIDENT_TYPE_OTHER => 0,
+            Incident::ACCIDENT_TYPE_CROSSING => 0,
+            Incident::ACCIDENT_TYPE_RAILROADCROSSING => 0,
+            Incident::ACCIDENT_TYPE_RIGHTOFWAY => 0,
+            Incident::ACCIDENT_TYPE_REDLIGHT => 0,
+            Incident::ACCIDENT_TYPE_RIGHTTURN => 0,
+            Incident::ACCIDENT_TYPE_FRONTAL => 0,
+            Incident::ACCIDENT_TYPE_OVERTAKE => 0,
+            Incident::ACCIDENT_TYPE_RAM => 0,
+            Incident::ACCIDENT_TYPE_PULLIN => 0,
+            Incident::ACCIDENT_TYPE_DOORING => 0,
+        ];
+
+        $statistic['infrastructure'] = [
+            Incident::ACCIDENT_INFRASTRUCTURE_ROAD => 0,
+            Incident::ACCIDENT_INFRASTRUCTURE_CYCLEPATH => 0,
+            Incident::ACCIDENT_INFRASTRUCTURE_SIDEWALK => 0,
+            Incident::ACCIDENT_INFRASTRUCTURE_FREEDSIDEWALK => 0,
+            Incident::ACCIDENT_INFRASTRUCTURE_COMBINED => 0,
+            Incident::ACCIDENT_INFRASTRUCTURE_RADFAHRSTREIFEN => 0,
+            Incident::ACCIDENT_INFRASTRUCTURE_SCHUTZSTREIFEN => 0,
+            Incident::ACCIDENT_INFRASTRUCTURE_FAHRRADSTRASSE => 0,
+            Incident::ACCIDENT_INFRASTRUCTURE_OTHER => 0,
+        ];
+
         /** @var Incident $incident */
         foreach ($incidentList as $incident) {
             $sex = $incident->getAccidentSex();
@@ -73,6 +101,22 @@ class StatisticController extends AbstractController
             }
 
             ++$statistic['age'][$ageCluster];
+
+            $accidentType = $incident->getAccidentType();
+
+            if (!$accidentType) {
+                $accidentType = Incident::ACCIDENT_TYPE_UNKNOWN;
+            }
+
+            ++$statistic['accidentType'][$accidentType];
+
+            $infrastructure = $incident->getAccidentInfrastructure();
+
+            if (!$infrastructure) {
+                $infrastructure = Incident::ACCIDENT_INFRASTRUCTURE_OTHER;
+            }
+
+            ++$statistic['infrastructure'][$infrastructure];
         }
 
 

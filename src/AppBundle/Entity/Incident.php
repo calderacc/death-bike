@@ -13,6 +13,48 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Incident
 {
+    const ACCIDENT_TYPE_SOLO = 'solo';
+    const ACCIDENT_TYPE_UNKNOWN = 'unknown';
+    const ACCIDENT_TYPE_OTHER = 'other';
+    const ACCIDENT_TYPE_CROSSING = 'crossing';
+    const ACCIDENT_TYPE_RAILROADCROSSING = 'railroadcrossing';
+    const ACCIDENT_TYPE_RIGHTOFWAY = 'rightofway';
+    const ACCIDENT_TYPE_REDLIGHT= 'redlight';
+    const ACCIDENT_TYPE_RIGHTTURN = 'rightturm';
+    const ACCIDENT_TYPE_FRONTAL = 'frontal';
+    const ACCIDENT_TYPE_OVERTAKE = 'overtake';
+    const ACCIDENT_TYPE_RAM = 'ram';
+    const ACCIDENT_TYPE_PULLIN = 'pullin';
+    const ACCIDENT_TYPE_DOORING = 'dooring';
+
+    const ACCIDENT_SEX_MALE = 'm';
+    const ACCIDENT_SEX_FEMALE = 'f';
+
+    const ACCIDENT_LOCATION_CITY = 'city';
+    const ACCIDENT_LOCATION_LAND = 'land';
+
+    const ACCIDENT_INFRASTRUCTURE_ROAD = 'road';
+    const ACCIDENT_INFRASTRUCTURE_CYCLEPATH = 'cyclepath';
+    const ACCIDENT_INFRASTRUCTURE_SIDEWALK = 'sidewalk';
+    const ACCIDENT_INFRASTRUCTURE_FREEDSIDEWALK = 'freedsidewalk';
+    const ACCIDENT_INFRASTRUCTURE_COMBINED = 'combined';
+    const ACCIDENT_INFRASTRUCTURE_RADFAHRSTREIFEN = 'radfahrstreifen';
+    const ACCIDENT_INFRASTRUCTURE_SCHUTZSTREIFEN = 'schutzstreifen';
+    const ACCIDENT_INFRASTRUCTURE_FAHRRADSTRASSE = 'fahrradstrasse';
+    const ACCIDENT_INFRASTRUCTURE_OTHER = 'other';
+
+    const ACCIDENT_OPPONENT_PEDESTRIAN = 'pedestrian';
+    const ACCIDENT_OPPONENT_CYCLIST = 'cyclist';
+    const ACCIDENT_OPPONENT_MOTORCYCLE = 'motorcycle';
+    const ACCIDENT_OPPONENT_CAR = 'car';
+    const ACCIDENT_OPPONENT_TRUCK = 'truck';
+    const ACCIDENT_OPPONENT_TRACTOR = 'tractor';
+    const ACCIDENT_OPPONENT_TRAIN = 'train';
+    const ACCIDENT_OPPONENT_TRAM = 'tram';
+    const ACCIDENT_OPPONENT_ANIMAL = 'animal';
+    const ACCIDENT_OPPONENT_NONE = 'none';
+    const ACCIDENT_OPPONENT_UNKNOWN = 'unknown';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -51,7 +93,6 @@ class Incident
      * @JMS\Type("string")
      */
     protected $geometryType;
-
     /**
      * @ORM\Column(type="string", length=255)
      * @JMS\Expose
