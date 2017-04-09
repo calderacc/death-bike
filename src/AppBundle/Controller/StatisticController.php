@@ -119,10 +119,6 @@ class StatisticController extends AbstractController
             ++$statistic['infrastructure'][$infrastructure];
         }
 
-
-
-
-
         return $statistic;
     }
 }

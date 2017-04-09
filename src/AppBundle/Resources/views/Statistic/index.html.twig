@@ -168,4 +168,138 @@
             </table>
         </div>
     </div>
+
+    <div class="row mt-5">
+        <div class="col-xs-12 col-sm-8 col-md-6 offset-sm-2 offset-md-3">
+            <h3 class="text-center">
+                Unfalltyp
+            </h3>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-xs-12 col-sm-8 col-md-6 offset-sm-2 offset-md-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Unfalltyp
+                        </th>
+                        <th>
+                            Anzahl
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Überquerung der Straße
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_CROSSING')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Kollision am Bahnübergang
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_RAILROADCROSSING')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Vorfahrtsverstoß
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_RIGHTOFWAY')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Rotlichtverstoß
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_REDLIGHT')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Rechtsabbiegeunfall
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_RIGHTTURN')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Frontalzusammenstoß mit anderem Verkehrsteilnehmer
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_FRONTAL')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Während Überholvorgang
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_OVERTAKE')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Rammen
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_RAM')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Einfahrt vom Grundstück in die Straße
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_PULLIN')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            geöffnete Autotür
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_DOORING')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            anderer Unfalltyp
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_OTHER')] }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            unbekannt
+                        </td>
+                        <td>
+                            {{ statistic.accidentType[constant('AppBundle\\Entity\\Incident::ACCIDENT_TYPE_UNKNOWN')] }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
