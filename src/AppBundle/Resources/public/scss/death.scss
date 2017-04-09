@@ -17,6 +17,7 @@
 @import "bootstrap/grid";
 @import "bootstrap/buttons";
 @import "bootstrap/tables";
+@import "bootstrap/card";
 
 @import "bootstrap/modal";
 @import "bootstrap/navbar";
@@ -160,4 +161,16 @@
 
 .mb-7 {
   margin-bottom: 3.5rem;
+}
+
+.card {
+  .incident-map {
+    height: 250px;
+  }
+
+  p,
+  a,
+  a:hover {
+    color: black;
+  }
 }
