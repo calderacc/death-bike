@@ -16,3 +16,4 @@
 /web/bundles/
 .idea
 src/AppBundle/Resources/public/.sass-cache
+.sass-cache
