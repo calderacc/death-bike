@@ -16,7 +16,7 @@ class DefaultController extends AbstractController
 
         $paginator  = $this->get('knp_paginator');
 
-        $query = $this->getDoctrine()->getRepository('AppBundle:Incident')->getListQuery();
+        $query = $this->getDoctrine()->getRepository('AppBundle:Incident')->getListQuery($year);
 
         $pagination = $paginator->paginate(
             $query,
