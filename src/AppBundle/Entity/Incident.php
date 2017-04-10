@@ -332,7 +332,7 @@ class Incident
         return $this->id;
     }
 
-    public function setLatitude(float $latitude): CoordinateInterface
+    public function setLatitude(float $latitude): Incident
     {
         $this->latitude = $latitude;
 
@@ -344,7 +344,7 @@ class Incident
         return $this->latitude;
     }
 
-    public function setLongitude(float $longitude): CoordinateInterface
+    public function setLongitude(float $longitude): Incident
     {
         $this->longitude = $longitude;
 
