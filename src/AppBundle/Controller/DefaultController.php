@@ -14,6 +14,16 @@ class DefaultController extends AbstractController
             $year = $dateTime->format('Y');
         }
 
+        $paginator  = $this->get('knp_paginator');
+
+        $query = $this->getDoctrine()->getRepository('AppBundle:Incident')->getListQuery();
+
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            10
+        );
+
         $incidentList = $this->getIncidentList($year);
 
         $counter = count($incidentList);
@@ -24,7 +34,7 @@ class DefaultController extends AbstractController
             [
                 'year' => $year,
                 'counter' => $counterString,
-                'incidentList' => $incidentList
+                'pagination' => $pagination,
             ]
         );
     }

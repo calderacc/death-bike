@@ -13,7 +13,7 @@
 
 <div class="row mt-5">
     <div class="col-12 col-md-8 offset-md-2">
-    {% for incident in incidentList %}
+    {% for incident in pagination %}
         <div class="card mb-5">
             <div id="incident-{{ incident.id }}-map" class="incident-map card-img-top" data-latitude="{{ incident.latitude }}" data-longitude="{{ incident.longitude }}">
 
