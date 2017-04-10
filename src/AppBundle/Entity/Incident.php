@@ -361,23 +361,6 @@ class Incident
         return $this->latitude . ',' . $this->longitude;
     }
 
-    public function getViews(): int
-    {
-        return $this->views;
-    }
-
-    public function setViews(int $views): ViewableInterface
-    {
-        $this->views = $views;
-
-        return $this;
-    }
-
-    public function incViews(): int
-    {
-        return ++$this->views;
-    }
-
     public function setSlug(string $slug): Incident
     {
         $this->slug = $slug;
