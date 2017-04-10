@@ -32,7 +32,7 @@
             </div>
 
             <div class="card-footer text-muted text-center">
-                {{ incident.dateTime|date('d.m.Y H:i') }} Uhr
+                {{ incident.dateTime|date('d.m.Y H:i', 'Europe/Berlin') }} Uhr
             </div>
         </div>
     {% endfor %}
