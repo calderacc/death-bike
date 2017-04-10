@@ -80,6 +80,12 @@ class StatisticController extends AbstractController
             Incident::ACCIDENT_INFRASTRUCTURE_OTHER => 0,
         ];
 
+        $statistic['location'] = [
+            Incident::ACCIDENT_LOCATION_CITY => 0,
+            Incident::ACCIDENT_LOCATION_LAND => 0,
+            null => 0,
+        ];
+
         $statistic['opponent'] = [
             Incident::ACCIDENT_OPPONENT_PEDESTRIAN => 0,
             Incident::ACCIDENT_OPPONENT_CYCLIST => 0,
@@ -149,6 +155,8 @@ class StatisticController extends AbstractController
             }
 
             ++$statistic['infrastructure'][$infrastructure];
+
+            ++$statistic['location'][$incident->getAccidentLocation()];
 
             $opponent = $incident->getAccidentOpponent();
 
