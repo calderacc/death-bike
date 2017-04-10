@@ -80,6 +80,20 @@ class StatisticController extends AbstractController
             Incident::ACCIDENT_INFRASTRUCTURE_OTHER => 0,
         ];
 
+        $statistic['opponent'] = [
+            Incident::ACCIDENT_OPPONENT_PEDESTRIAN => 0,
+            Incident::ACCIDENT_OPPONENT_CYCLIST => 0,
+            Incident::ACCIDENT_OPPONENT_MOTORCYCLE => 0,
+            Incident::ACCIDENT_OPPONENT_CAR => 0,
+            Incident::ACCIDENT_OPPONENT_TRUCK => 0,
+            Incident::ACCIDENT_OPPONENT_TRACTOR => 0,
+            Incident::ACCIDENT_OPPONENT_TRAIN => 0,
+            Incident::ACCIDENT_OPPONENT_TRAM => 0,
+            Incident::ACCIDENT_OPPONENT_ANIMAL => 0,
+            Incident::ACCIDENT_OPPONENT_NONE => 0,
+            Incident::ACCIDENT_OPPONENT_UNKNOWN => 0,
+        ];
+
         /** @var Incident $incident */
         foreach ($incidentList as $incident) {
             $sex = $incident->getAccidentSex();
@@ -117,6 +131,14 @@ class StatisticController extends AbstractController
             }
 
             ++$statistic['infrastructure'][$infrastructure];
+
+            $opponent = $incident->getAccidentOpponent();
+
+            if (!$opponent) {
+                $opponent = Incident::ACCIDENT_OPPONENT_UNKNOWN;
+            }
+
+            ++$statistic['opponent'][$opponent];
         }
 
         return $statistic;
