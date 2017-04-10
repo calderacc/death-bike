@@ -821,7 +821,7 @@ class Incident
         return $this;
     }
 
-    public function getAccidentCyclistCaused(): ?string
+    public function getAccidentCyclistCaused(): ?bool
     {
         return $this->accidentCyclistCaused;
     }
