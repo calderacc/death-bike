@@ -587,6 +587,59 @@
             </table>
         </div>
     </div>
+
+    <div class="row mt-5">
+        <div class="col-xs-12 col-sm-8 col-md-6 offset-sm-2 offset-md-3">
+            <h3 class="text-center">
+                Sturzhelm
+            </h3>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-xs-12 col-sm-8 col-md-6 offset-sm-2 offset-md-3">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        Sturzhelm
+                    </th>
+                    <th>
+                        Anzahl
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        ja
+                    </td>
+                    <td>
+                        {{ statistic.helmet[true] }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        nein
+                    </td>
+                    <td>
+                        {{ statistic.helmet[false] }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        unbekannt
+                    </td>
+                    <td>
+                        {{ statistic.helmet[null] }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
 
 

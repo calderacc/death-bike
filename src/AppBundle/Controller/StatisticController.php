@@ -100,6 +100,12 @@ class StatisticController extends AbstractController
             null => 0,
         ];
 
+        $statistic['helmet'] = [
+            true => 0,
+            false => 0,
+            null => 0,
+        ];
+
         /** @var Incident $incident */
         foreach ($incidentList as $incident) {
             $sex = $incident->getAccidentSex();
@@ -147,6 +153,8 @@ class StatisticController extends AbstractController
             ++$statistic['opponent'][$opponent];
 
             ++$statistic['pedelec'][$incident->getAccidentPedelec()];
+
+            ++$statistic['helmet'][$incident->getAccidentHelmet()];
         }
 
         return $statistic;
