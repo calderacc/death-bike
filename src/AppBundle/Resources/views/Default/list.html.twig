@@ -67,7 +67,35 @@
                                 Unfallart
                             </dt>
                             <dd>
-                                {{ incident.accidentType }}
+                                {% if incident.accidentType == constant('ACCIDENT_TYPE_SOLO', incident) %}
+                                    Alleinunfall
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_UNKNOWN', incident) %}
+                                    unbekannt
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_OTHER', incident) %}
+                                    unbekannt
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_CROSSING', incident) %}
+                                    Überquerung der Fahrbahn
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_RAILROADCROSSING', incident) %}
+                                    Bahnübergang
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_RIGHTOFWAY', incident) %}
+                                    Vorfahrtsverstoß
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_REDLIGHT', incident) %}
+                                    Rotlichtverstoß
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_RIGHTTURN', incident) %}
+                                    Abbiegeunfall
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_FRONTAL', incident) %}
+                                    Frontalkollision
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_OVERTAKE', incident) %}
+                                    Überholvorgang
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_RAM', incident) %}
+                                    Rammen
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_PULLIN', incident) %}
+                                    Einfahren in die Fahrbahn
+                                {% elseif incident.accidentType == constant('ACCIDENT_TYPE_DOORING', incident) %}
+                                    Dooring
+                                {% else %}
+                                    unbekannt
+                                {% endif %}
                             </dd>
                         </dl>
                     </div>
