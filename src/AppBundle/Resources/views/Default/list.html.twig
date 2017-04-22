@@ -110,7 +110,13 @@
                                 Ort
                             </dt>
                             <dd>
-                                {{ incident.accidentLocation }}
+                                {% if incident.accidentLocation == constant('ACCIDENT_LOCATION_CITY', incident) %}
+                                    innerorts
+                                {% elseif incident.accidentLocation == constant('ACCIDENT_LOCATION_LAND', incident) %}
+                                    außerorts
+                                {% else %}
+                                    unbekannt
+                                {% endif %}
                             </dd>
                         </dl>
                     </div>
