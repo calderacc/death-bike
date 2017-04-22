@@ -50,7 +50,13 @@
                                 Geschlecht
                             </dt>
                             <dd>
-                                {{ incident.accidentSex }}
+                                {% if incident.accidentSex == constant('ACCIDENT_SEX_MALE', incident) %}
+                                    männlich
+                                {% elseif incident.accidentSex == constant('ACCIDENT_SEX_FEMALE', incident) %}
+                                    weiblich
+                                {% else %}
+                                    unbekannt
+                                {% endif %}
                             </dd>
                         </dl>
                     </div>
