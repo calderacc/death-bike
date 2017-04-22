@@ -39,7 +39,11 @@
                                 Alter
                             </dt>
                             <dd>
-                                {{ incident.accidentAge }}
+                                {% if incident.accidentAge %}
+                                {{ incident.accidentAge }} Jahre
+                                {% else %}
+                                unbekannt
+                                {% endif %}
                             </dd>
                         </dl>
                     </div>
