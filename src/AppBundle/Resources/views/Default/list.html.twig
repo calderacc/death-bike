@@ -149,7 +149,13 @@
                                 Sturzhelm
                             </dt>
                             <dd>
-                                {{ incident.accidentHelmet }}
+                                {% if incident.accidentHelmet == null %}
+                                    unbekannt
+                                {% elseif incident.accidentHelmet == true %}
+                                    ja
+                                {% elseif incident.accidentLocation == false %}
+                                    nein
+                                {% endif %}
                             </dd>
                         </dl>
                     </div>
@@ -160,7 +166,13 @@
                                 Pedelec
                             </dt>
                             <dd>
-                                {{ incident.accidentPedelec }}
+                                {% if incident.accidentPedelec == null %}
+                                    unbekannt
+                                {% elseif incident.accidentPedelec == true %}
+                                    ja
+                                {% elseif incident.accidentPedelec == false %}
+                                    nein
+                                {% endif %}
                             </dd>
                         </dl>
                     </div>
