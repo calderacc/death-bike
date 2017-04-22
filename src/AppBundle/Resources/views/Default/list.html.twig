@@ -31,6 +31,91 @@
                 </p>
             </div>
 
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-6">
+                        <dl>
+                            <dt>
+                                Alter
+                            </dt>
+                            <dd>
+                                {{ incident.accidentAge }}
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-6">
+                        <dl>
+                            <dt>
+                                Geschlecht
+                            </dt>
+                            <dd>
+                                {{ incident.accidentSex }}
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-6">
+                        <dl>
+                            <dt>
+                                Unfallart
+                            </dt>
+                            <dd>
+                                {{ incident.accidentType }}
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-6">
+                        <dl>
+                            <dt>
+                                Ort
+                            </dt>
+                            <dd>
+                                {{ incident.accidentLocation }}
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-6">
+                        <dl>
+                            <dt>
+                                Infrastruktur
+                            </dt>
+                            <dd>
+                                {{ incident.accidentInfrastructure }}
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-6">
+                        <dl>
+                            <dt>
+                                Unfallgegner
+                            </dt>
+                            <dd>
+                                {{ incident.accidentOpponent }}
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-6">
+                        <dl>
+                            <dt>
+                                Sturzhelm
+                            </dt>
+                            <dd>
+                                {{ incident.accidentHelmet }}
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-6">
+                        <dl>
+                            <dt>
+                                Pedelec
+                            </dt>
+                            <dd>
+                                {{ incident.accidentPedelec }}
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
             <div class="card-footer text-muted text-center">
                 {{ incident.dateTime|date('d.m.Y H:i', 'Europe/Berlin') }} Uhr
             </div>
