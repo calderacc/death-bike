@@ -127,7 +127,27 @@
                                 Infrastruktur
                             </dt>
                             <dd>
-                                {{ incident.accidentInfrastructure }}
+                                {% if incident.accidentInfrastructure == constant('ACCIDENT_INFRASTRUCTURE_ROAD', incident) %}
+                                    Fahrbahn
+                                {% elseif incident.accidentInfrastructure == constant('ACCIDENT_INFRASTRUCTURE_CYCLEPATH', incident) %}
+                                    Radweg
+                                {% elseif incident.accidentInfrastructure == constant('ACCIDENT_INFRASTRUCTURE_SIDEWALK', incident) %}
+                                    Gehweg
+                                {% elseif incident.accidentInfrastructure == constant('ACCIDENT_INFRASTRUCTURE_FREEDSIDEWALK', incident) %}
+                                    freigegebener Gehweg
+                                {% elseif incident.accidentInfrastructure == constant('ACCIDENT_INFRASTRUCTURE_COMBINED', incident) %}
+                                    gemeinsamer Fuß- und Radweg
+                                {% elseif incident.accidentInfrastructure == constant('ACCIDENT_INFRASTRUCTURE_RADFAHRSTREIFEN', incident) %}
+                                    Radfahrstreifen
+                                {% elseif incident.accidentInfrastructure == constant('ACCIDENT_INFRASTRUCTURE_SCHUTZSTREIFEN', incident) %}
+                                    Schutzstreifen
+                                {% elseif incident.accidentInfrastructure == constant('ACCIDENT_INFRASTRUCTURE_FAHRRADSTRASSE', incident) %}
+                                    Fahrradstraße
+                                {% elseif incident.accidentInfrastructure == constant('ACCIDENT_INFRASTRUCTURE_OTHER', incident) %}
+                                    andere / abseits der Straße
+                                {% else %}
+                                    unbekannt
+                                {% endif %}
                             </dd>
                         </dl>
                     </div>
