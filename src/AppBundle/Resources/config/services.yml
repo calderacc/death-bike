@@ -15,3 +15,10 @@ services:
 
     caldera.parser.multistep.anchor:
         class: AppBundle\Parser\MultiStepParser\Step\AnchorParserStep
+
+    caldera.twig.extension:
+        class: AppBundle\Twig\Extension\SiteTwigExtension
+        arguments:
+            - '@caldera.parser.multistep'
+        tags:
+            - { name: twig.extension }
