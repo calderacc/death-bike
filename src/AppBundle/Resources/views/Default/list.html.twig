@@ -158,7 +158,31 @@
                                 Unfallgegner
                             </dt>
                             <dd>
-                                {{ incident.accidentOpponent }}
+                                {% if incident.accidentOpponent == constant('ACCIDENT_OPPONENT_PEDESTRIAN', incident) %}
+                                    Fußgänger
+                                {% elseif incident.accidentOpponent == constant('ACCIDENT_OPPONENT_CYCLIST', incident) %}
+                                    Radfahrer
+                                {% elseif incident.accidentOpponent == constant('ACCIDENT_OPPONENT_MOTORCYCLE', incident) %}
+                                    Motorradfahrer
+                                {% elseif incident.accidentOpponent == constant('ACCIDENT_OPPONENT_CAR', incident) %}
+                                    Kraftfahrzeug
+                                {% elseif incident.accidentOpponent == constant('ACCIDENT_OPPONENT_TRUCK', incident) %}
+                                    Lastkraftwagen
+                                {% elseif incident.accidentOpponent == constant('ACCIDENT_OPPONENT_TRACTOR', incident) %}
+                                    Traktor, landwirtschaftliches Fahrzeug
+                                {% elseif incident.accidentOpponent == constant('ACCIDENT_OPPONENT_TRAIN', incident) %}
+                                    Eisenbahn
+                                {% elseif incident.accidentOpponent == constant('ACCIDENT_OPPONENT_TRAM', incident) %}
+                                    Straßenbahn
+                                {% elseif incident.accidentOpponent == constant('ACCIDENT_OPPONENT_ANIMAL', incident) %}
+                                    Tier, Haustier
+                                {% elseif incident.accidentOpponent == constant('ACCIDENT_OPPONENT_NONE', incident) %}
+                                    keiner, Alleinunfall
+                                {% elseif incident.accidentOpponent == constant('ACCIDENT_OPPONENT_UNKNOWN', incident) %}
+                                    unbekannt
+                                {% else %}
+                                    unbekannt
+                                {% endif %}
                             </dd>
                         </dl>
                     </div>
