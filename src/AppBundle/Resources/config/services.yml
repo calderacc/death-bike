@@ -1,0 +1,17 @@
+services:
+    caldera.parser.multistep:
+        class: AppBundle\Parser\MultiStepParser\MultiStepParser
+        calls:
+            - [ addStep, [ '@caldera.parser.multistep.link' ]]
+            - [ addStep, [ '@caldera.parser.multistep.markdown' ]]
+            - [ addStep, [ '@caldera.parser.multistep.anchor' ]]
+
+    caldera.parser.multistep.markdown:
+        class: AppBundle\Parser\MultiStepParser\Step\MarkdownParserStep
+        arguments: [ '@markdown.parser' ]
+
+    caldera.parser.multistep.link:
+        class: AppBundle\Parser\MultiStepParser\Step\LinkParserStep
+
+    caldera.parser.multistep.anchor:
+        class: AppBundle\Parser\MultiStepParser\Step\AnchorParserStep
